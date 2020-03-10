@@ -27,7 +27,7 @@ def dismissViewController(viewController):
   vc = '(%s)' % (viewController)
   
   if fb.evaluateBooleanExpression('%s != nil && ((BOOL)[(id)%s isKindOfClass:(Class)[UIViewController class]])' % (vc, vc)):
-    isPresented = fb.evaluateBooleanExpression('[%s presentingViewController] != nil' % vc)
+    isPresented = fb.evaluateBooleanExpression('[(UIViewController *)%s presentingViewController] != nil' % vc)
     
     if isPresented:
       fb.evaluateEffect('[(UIViewController *)%s dismissViewControllerAnimated:YES completion:nil]' % vc)
