@@ -62,7 +62,7 @@ class FBDrawBorderCommand(fb.FBCommand):
   def run(self, args, options):
     def setBorder(layer, width, color, colorClass):
       fb.evaluateEffect('[%s setBorderWidth:(CGFloat)%s]' % (layer, width))
-      fb.evaluateEffect('[%s setBorderColor:(CGColorRef)[(id)[%s %sColor] CGColor]]' % (layer, colorClass, color))
+      fb.evaluateEffect('[%s setBorderColor:(CGColorRef)[(id)[NSClassFromString(@"%s") %sColor] CGColor]]' % (layer, colorClass, color))
 
     obj = fb.evaluateInputExpression(args[0])
     depth = int(options.depth)

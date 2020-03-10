@@ -30,7 +30,7 @@ def maskView(viewOrLayer, color, alpha):
   mask = fb.evaluateExpression('(id)[[UIView alloc] initWithFrame:%s]' % rectExpr)
 
   fb.evaluateEffect('[%s setTag:(NSInteger)%s]' % (mask, viewOrLayer))
-  fb.evaluateEffect('[%s setBackgroundColor:[UIColor %sColor]]' % (mask, color))
+  fb.evaluateEffect('[%s setBackgroundColor:(id)[NSClassFromString(@"UIColor") %sColor]]' % (mask, color))
   fb.evaluateEffect('[%s setAlpha:(CGFloat)%s]' % (mask, alpha))
   fb.evaluateEffect('[%s addSubview:%s]' % (window, mask))
   flushCoreAnimationTransaction()
