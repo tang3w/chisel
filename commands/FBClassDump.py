@@ -238,7 +238,7 @@ def decode(code):
 def getMethods(klass):
   tmpString = """
     unsigned int outCount;
-    Method *methods = (Method *)class_copyMethodList((Class)$cls, &outCount);
+    struct objc_method **methods = (struct objc_method **)class_copyMethodList((Class)$cls, &outCount);
     NSMutableArray *result = (id)[NSMutableArray array];
     
     for (int i = 0; i < outCount; i++) {
